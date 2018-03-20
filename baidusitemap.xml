@@ -3,20 +3,19 @@
 
 
     
-    
-    
-    
-    
-    
   <url>
-    <loc>http://www.kezi.me/test/</loc>
-    <lastmod>2018-03-10T04:22:59.752Z</lastmod>
+    <loc>http://www.kezi.me/bilibili_api/</loc>
+    <lastmod>2018-03-20T08:01:13.415Z</lastmod>
     <data>
         <display>
-        <title>test</title>
-        <pubTime>2018-01-12T07:30:00.000Z</pubTime>
+        <title>BiliBili接口整理</title>
+        <pubTime>2018-03-20T07:46:00.000Z</pubTime>
         
-        <tag>测试</tag>
+        <tag>bilibili</tag>
+         
+        <tag>API</tag>
+         
+        <tag>接口</tag>
          
          
            
@@ -25,20 +24,8 @@
     </url>
 
     
-  <url>
-    <loc>http://www.kezi.me/hello-world/</loc>
-    <lastmod>2018-03-09T16:17:33.568Z</lastmod>
-    <data>
-        <display>
-        <title>Hello World</title>
-        <pubTime>2018-01-12T04:38:32.146Z</pubTime>
-        
-        <tag>默认</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
+    
+    
+    
+    
 </urlset>
