@@ -79,18 +79,23 @@
 
 
 
-<meta name="description" content="BiliBili接口整理 视频数据：https://api.bilibili.com/x/web-interface/archive/stat?aid=AV号  视频标签：https://api.bilibili.com/x/tag/archive/tags?aid=AV号  视频评论：http://api.bilibili.com/x/v2/reply?type=1&amp;amp;oid=AV号  搜">
+<meta name="description" content="整理一下B站的接口（待补充）">
 <meta name="keywords" content="bilibili,API,接口">
 <meta property="og:type" content="article">
 <meta property="og:title" content="BiliBili接口整理">
 <meta property="og:url" content="http://www.kezi.me/bilibili_api/index.html">
 <meta property="og:site_name" content="柯梓的四畳半空间">
-<meta property="og:description" content="BiliBili接口整理 视频数据：https://api.bilibili.com/x/web-interface/archive/stat?aid=AV号  视频标签：https://api.bilibili.com/x/tag/archive/tags?aid=AV号  视频评论：http://api.bilibili.com/x/v2/reply?type=1&amp;amp;oid=AV号  搜">
+<meta property="og:description" content="整理一下B站的接口（待补充）">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-20T08:01:13.415Z">
+<meta property="og:image" content="http://p5vucyrd4.bkt.clouddn.com/bilibili_api/bilibili.jpg">
+<meta property="og:image" content="http://p5vucyrd4.bkt.clouddn.com/bilibili_api/data.png">
+<meta property="og:image" content="http://p5vucyrd4.bkt.clouddn.com/bilibili_api/tags.png">
+<meta property="og:image" content="http://p5vucyrd4.bkt.clouddn.com/bilibili_api/SearchDefaultWords.png">
+<meta property="og:updated_time" content="2018-03-21T13:40:12.253Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="BiliBili接口整理">
-<meta name="twitter:description" content="BiliBili接口整理 视频数据：https://api.bilibili.com/x/web-interface/archive/stat?aid=AV号  视频标签：https://api.bilibili.com/x/tag/archive/tags?aid=AV号  视频评论：http://api.bilibili.com/x/v2/reply?type=1&amp;amp;oid=AV号  搜">
+<meta name="twitter:description" content="整理一下B站的接口（待补充）">
+<meta name="twitter:image" content="http://p5vucyrd4.bkt.clouddn.com/bilibili_api/bilibili.jpg">
 
 
 
@@ -270,7 +275,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="柯梓">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="image" content="http://p5vucyrd4.bkt.clouddn.com/avatar.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -332,16 +337,32 @@
       
 
       
-        <h1 id="BiliBili接口整理"><a href="#BiliBili接口整理" class="headerlink" title="BiliBili接口整理"></a>BiliBili接口整理</h1><ol>
-<li><p>视频数据：<br><code>https://api.bilibili.com/x/web-interface/archive/stat?aid=AV号</code></p>
-</li>
-<li><p>视频标签：<br><code>https://api.bilibili.com/x/tag/archive/tags?aid=AV号</code></p>
-</li>
-<li><p>视频评论：<br><code>http://api.bilibili.com/x/v2/reply?type=1&amp;oid=AV号</code></p>
-</li>
-<li><p>搜索框默认展示词：<br><code>https://www.bilibili.com/widget/getSearchDefaultWords</code></p>
-</li>
-</ol>
+        <p>整理一下B站的接口（待补充）<br><img src="http://p5vucyrd4.bkt.clouddn.com/bilibili_api/bilibili.jpg" alt=""><br><a id="more"></a><br>所有接口都以<a href="https://www.bilibili.com/video/av20828860" target="_blank" rel="noopener">AV20828860</a>为例来解释说明</p>
+<h1 id="视频数据"><a href="#视频数据" class="headerlink" title="视频数据"></a>视频数据</h1><p><code>https://api.bilibili.com/x/web-interface/archive/stat?aid=AV号</code><br>示例<br><code>https://api.bilibili.com/x/web-interface/archive/stat?aid=20828860</code><br>获取到如下数据</p>
+<pre><code>{
+&quot;code&quot;:0,    
+&quot;message&quot;:&quot;0&quot;,
+&quot;ttl&quot;:1,
+&quot;data&quot;:
+    {
+  &quot;aid&quot;:20828860,     //AV号
+  &quot;view&quot;:374364,    //播放量
+  &quot;danmaku&quot;:19705,    //弹幕数量
+  &quot;reply&quot;:4821,        //评论
+  &quot;favorite&quot;:15919,    //收藏
+  &quot;coin&quot;:29513,        //硬币
+  &quot;share&quot;:4360,        //分享
+  &quot;now_rank&quot;:0,        //当前排名
+  &quot;his_rank&quot;:17,    //历史排名
+  &quot;no_reprint&quot;:0,
+  &quot;copyright&quot;:1
+    }
+}
+</code></pre><p>视频上方的数据<br><img src="http://p5vucyrd4.bkt.clouddn.com/bilibili_api/data.png" alt=""></p>
+<h1 id="视频标签"><a href="#视频标签" class="headerlink" title="视频标签"></a>视频标签</h1><p><code>https://api.bilibili.com/x/tag/archive/tags?aid=AV号</code><br>示例<br><code>https://api.bilibili.com/x/tag/archive/tags?aid=20828860</code></p>
+<p>截图<br><img src="http://p5vucyrd4.bkt.clouddn.com/bilibili_api/tags.png" alt=""></p>
+<h1 id="视频评论"><a href="#视频评论" class="headerlink" title="视频评论"></a>视频评论</h1><p><code>http://api.bilibili.com/x/v2/reply?type=1&amp;oid=AV号</code><br>示例<br><code>http://api.bilibili.com/x/v2/reply?type=1&amp;oid=20828860</code></p>
+<h1 id="搜索框默认展示词"><a href="#搜索框默认展示词" class="headerlink" title="搜索框默认展示词"></a>搜索框默认展示词</h1><p><code>https://www.bilibili.com/widget/getSearchDefaultWords</code><br>获取到如下内容<br><code>[{&quot;show&quot;:&quot;\u6296\u817f\u6311\u6218\uff01\u4f60\u80fd\u5fcd\u5f97\u4f4f\u5417&quot;,&quot;word&quot;:&quot;av20980293&quot;}]</code><br>Unicodez转码为中文<br><code>[{&quot;show&quot;:&quot;抖腿挑战！你能忍得住吗&quot;,&quot;word&quot;:&quot;av20980293&quot;}]</code><br>可以看出获得的是展示词以及其视频AV号<br><img src="http://p5vucyrd4.bkt.clouddn.com/bilibili_api/SearchDefaultWords.png" alt=""></p>
 
       
     </div>
@@ -435,7 +456,7 @@
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <img class="site-author-image" itemprop="image"
-                src="/images/avatar.jpg"
+                src="http://p5vucyrd4.bkt.clouddn.com/avatar.jpg"
                 alt="柯梓" />
             
               <p class="site-author-name" itemprop="name">柯梓</p>
@@ -523,7 +544,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#BiliBili接口整理"><span class="nav-number">1.</span> <span class="nav-text">BiliBili接口整理</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#视频数据"><span class="nav-number">1.</span> <span class="nav-text">视频数据</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#视频标签"><span class="nav-number">2.</span> <span class="nav-text">视频标签</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#视频评论"><span class="nav-number">3.</span> <span class="nav-text">视频评论</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#搜索框默认展示词"><span class="nav-number">4.</span> <span class="nav-text">搜索框默认展示词</span></a></li></ol></div>
             
 
           </div>
