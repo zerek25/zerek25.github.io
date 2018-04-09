@@ -5,7 +5,7 @@
     
   <url>
     <loc>http://www.kezi.me/bilibili_api/</loc>
-    <lastmod>2018-03-21T13:40:12.253Z</lastmod>
+    <lastmod>2018-04-09T11:12:55.306Z</lastmod>
     <data>
         <display>
         <title>BiliBili接口整理</title>
@@ -19,6 +19,33 @@
          
          
            
+             
+              <breadCrumb title="软件接口" url="http://www.kezi.me/categories/%E8%BD%AF%E4%BB%B6%E6%8E%A5%E5%8F%A3/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.kezi.me/raid/</loc>
+    <lastmod>2018-04-09T11:11:49.420Z</lastmod>
+    <data>
+        <display>
+        <title>简单了解RAID</title>
+        <pubTime>2018-04-09T11:04:00.000Z</pubTime>
+        
+        <tag>RAID</tag>
+         
+        <tag>独立冗余磁盘阵列</tag>
+         
+        <tag>磁盘镜像</tag>
+         
+         
+           
+             
+              <breadCrumb title="硬件技术" url="http://www.kezi.me/categories/%E7%A1%AC%E4%BB%B6%E6%8A%80%E6%9C%AF/"/>
+          
         </display>
     </data>
     </url>
