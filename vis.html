@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html style="height: 100%">
+<head>
+    <meta charset="utf-8">
+</head>
+<body style="height: 100%; margin: 100px">
+<div id="main" style="height: 80%"></div>
+<div id="2" style="height: 80%"></div>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/echarts/4.1.0/echarts.min.js"></script>
+<script type="text/javascript">
+    var dom = document.getElementById("main");
+    var myChart = echarts.init(dom, 'dark');
+    var Chart = echarts.init(document.getElementById("2"), 'dark');
+    option = {
+        title: {
+            text: 'BiliBili注册人数'
+        },
+        tooltip : {
+            trigger: 'axis',
+            axisPointer: {
+                type: 'cross',
+                label: {
+                    backgroundColor: '#6a7985'
+                }
+            }
+        },
+        legend: {
+            data:['男','女']
+        },
+        toolbox: {
+            feature: {
+                saveAsImage: {}
+            }
+        },
+        grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '3%',
+            containLabel: true
+        },
+        xAxis : [
+            {
+                type : 'category',
+                boundaryGap : false,
+                data : ['2009', '2010', '2011', '2012', '2013', '2014', '2015',
+                    '2016', '2017', '2018']
+            }
+        ],
+        yAxis : [
+            {
+                type : 'value'
+            }
+        ],
+        series : [
+            {
+                name:'女',
+                type:'line',
+                stack: '总量',
+                areaStyle: {normal: {}},
+                data:[20, 182, 591, 1234, 2290, 3030, 5310, 7999, 13997, 33999]
+            },
+            {
+                name:'男',
+                type:'line',
+                stack: '总量',
+                areaStyle: {normal: {}},
+                data:[20, 132, 501, 1034, 2090, 3230, 5210, 7845, 11958, 39853]
+            }
+        ]
+    };
+    ;
+    option2 = {
+        title: {
+            text: 'BiliBili男女比例'
+        },
+        tooltip : {
+            trigger: 'axis',
+            axisPointer: {
+                type: 'cross',
+                label: {
+                    backgroundColor: '#6a7985'
+                }
+            }
+        },
+        legend: {
+            data:['男','女']
+        },
+        toolbox: {
+            feature: {
+                saveAsImage: {}
+            }
+        },
+        grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '3%',
+            containLabel: true
+        },
+        xAxis : [
+            {
+                type : 'category',
+                boundaryGap : false,
+                data : ['2009', '2010', '2011', '2012', '2013', '2014', '2015',
+                    '2016', '2017', '2018']
+            }
+        ],
+        yAxis : [
+            {
+                type : 'value'
+            }
+        ],
+        series : [
+            {
+                name:'女',
+                type:'line',
+                stack: '总量',
+                areaStyle: {normal: {}},
+                data:[0.18, 0.2, 0.24, 0.25, 0.29, 0.3, 0.35, 0.4, 0.45, 0.47]
+            },
+            {
+                name:'男',
+                type:'line',
+                stack: '总量',
+                areaStyle: {normal: {}},
+                data:[0.82, 0.80, 0.76, 0.75, 0.71, 0.7, 0.65, 0.6, 0.55, 0.53]
+            }
+        ]
+    };
+    ;
+    if (option && typeof option === "object") {
+        myChart.setOption(option, true);
+        Chart.setOption(option2, true);
+    }
+</script>
+</body>
+</html>
