@@ -1,17 +1,24 @@
 <!DOCTYPE html>
-<html style="height: 100%">
+<html>
 <head>
     <meta charset="utf-8">
 </head>
+<title >BiliBili用户信息可视化</title>
 <body style="height: 100%; margin: 100px">
-<div id="main" style="height: 80%"></div>
-<div id="2" style="height: 80%"></div>
+<h1 style="text-align:center">BiliBili用户信息可视化</h1>
+<h2>1、注册人数</h2>
+<div id="number" style="height: 400px"></div>
+<div id="proportion" style="height: 400px"></div>
+<h2>2、用户追番情况</h2>
+<h2>3、用户关注标签</h2>
+<div id="wordcloud" style="height: 400px"></div>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/echarts/4.1.0/echarts.min.js"></script>
+<script type="text/javascript" src="echarts-wordcloud.min.js"></script>
 <script type="text/javascript">
-    var dom = document.getElementById("main");
-    var myChart = echarts.init(dom, 'dark');
-    var Chart = echarts.init(document.getElementById("2"), 'dark');
-    option = {
+    var numChart = echarts.init(document.getElementById("number"));
+    var proChart = echarts.init(document.getElementById("proportion"));
+    var wcChart = echarts.init(document.getElementById("wordcloud"));
+    number = {
         title: {
             text: 'BiliBili注册人数'
         },
@@ -68,8 +75,7 @@
             }
         ]
     };
-    ;
-    option2 = {
+    proportion = {
         title: {
             text: 'BiliBili男女比例'
         },
@@ -126,11 +132,39 @@
             }
         ]
     };
-    ;
-    if (option && typeof option === "object") {
-        myChart.setOption(option, true);
-        Chart.setOption(option2, true);
-    }
+    wordcloud = option = {
+        title:{
+            text:"用户关注标签词云图"
+        },
+        tooltip: {},
+        series: [{
+            type: 'wordCloud',
+            gridSize: 20,
+            sizeRange: [10, 50],
+            rotationRange: [0, 0],
+            shape: 'circle',
+            textStyle: {
+                normal: {
+                    color: function() {
+                        return 'rgb(' + [
+                            Math.round(Math.random() * 160),
+                            Math.round(Math.random() * 160),
+                            Math.round(Math.random() * 160)
+                        ].join(',') + ')';
+                    }
+                },
+                emphasis: {
+                    shadowBlur: 10,
+                    shadowColor: '#333'
+                }
+            },
+            data: [{name: "VOCALOID",value: 2811}, {name: "喵星人",value: 2278}, {name: "守望先锋",value: 1396}, {name: "BBC",value: 1302}, {name: "兄贵",value: 1960}, {name: "GALGAME",value: 1916}, {name: "岚少",value: 6135}, {name: "レトルト",value: 2176}, {name: "周刊哔哩哔哩排行榜",value: 5210}, {name: "英雄联盟",value: 1759}, {name: "BILIBILI正版",value: 1573}, {name: "日剧",value: 2829}, {name: "微博上各种不科学的图",value: 5856}, {name: "SABER字幕组",value: 1417}, {name: "声优",value: 1736}, {name: "敖厂长",value: 7614}, {name: "钉宫理惠",value: 1353}, {name: "初音ミク",value: 3326}, {name: "柿チョコ",value: 1604}, {name: "蛇足",value: 1349}, {name: "空耳",value: 1388}, {name: "黑桐谷歌",value: 3624}, {name: "福利",value: 1617}, {name: "NICO翻唱周刊",value: 1430}, {name: "芙兰朵露·斯卡雷特",value: 1325}, {name: "星际老男孩",value: 1908}, {name: "金坷垃",value: 2070}, {name: "元首",value: 2373}, {name: "料理制作",value: 1660}, {name: "哲学",value: 1650}, {name: "技术宅",value: 1456}, {name: "游戏杂谈",value: 4218}, {name: "Q君",value: 2497}, {name: "动漫音乐",value: 2008}, {name: "纯黑",value: 1728}, {name: "96猫",value: 3185}, {name: "触手猴",value: 2804}, {name: "搞笑",value: 2087}, {name: "DOTA2",value: 2168}, {name: "东方音乐",value: 1798}, {name: "百合",value: 1517}, {name: "伍声2009",value: 2264}, {name: "贝尔·格里尔斯",value: 4428}, {name: "FPSRUSSIA",value: 1472}, {name: "撒萌萌",value: 2755}, {name: "満福神社",value: 1304}, {name: "祈INORY",value: 2629}, {name: "老湿★KFG",value: 1537}, {name: "AKB48",value: 1381}, {name: "花泽香菜",value: 1645}, {name: "逍遥散人",value: 1947}, {name: "12DORA",value: 1849}, {name: "咕噜碳",value: 3472}, {name: "洛天依",value: 3107}, {name: "钢兵",value: 1380}, {name: "赤ティン",value: 1598}]
+        }]
+    };
+    numChart.setOption(number, true);
+    proChart.setOption(proportion, true);
+    wcChart.setOption(wordcloud, true);
+
 </script>
 </body>
 </html>
