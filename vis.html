@@ -14,10 +14,14 @@
 <div id="wordcloud" style="height: 500px;width: 60%;margin-left:auto;margin-right:auto"></div>
 <div id="tagpie" style="height: 600px;width: 60%;margin-left:auto;margin-right:auto"></div>
 <h2>3、追番情况</h2>
+<h3 style="text-align:center">四月番剧数据</h3>
 <div id="scatterpoint" style="height: 500px;width: 60%;margin-left:auto;margin-right:auto"></div>
+<div id="pxzb" style="height: 500px;width: 60%;margin-left:auto;margin-right:auto"></div>
+<h3 style="text-align:center">番剧Magalo Box各集弹幕密度</h3>
 <div id="singlepoint" style="height: 600px;width: 80%;margin-left:auto;margin-right:auto"></div>
 <h2>4、播放相关</h2>
 <div id="totalbars" style="height: 500px;width: 80%;margin-left:auto;margin-right:auto"></div>
+<h3 style="text-align:center">粉丝数TOP10</h3>
 <div id="line" style="height: 500px;width: 80%;margin-left:auto;margin-right:auto"></div>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/echarts/4.1.0/echarts.min.js"></script>
 <script type="text/javascript" src="echarts-wordcloud.min.js"></script>
@@ -29,6 +33,7 @@
     var tpChart = echarts.init(document.getElementById("tagpie"));
     var tbChart = echarts.init(document.getElementById("totalbars"));
     var scpChart = echarts.init(document.getElementById("scatterpoint"));
+    var pxzbChart = echarts.init(document.getElementById("pxzb"));
     var sipChart = echarts.init(document.getElementById("singlepoint"));
     var lineChart = echarts.init(document.getElementById("line"));
     var line ={
@@ -161,6 +166,12 @@
             shadowOffsetX: 0,
             shadowOffsetY: 0,
             shadowColor: 'rgba(0, 0, 0, 0.5)'
+        }
+    };
+    var lineStyle = {
+        normal: {
+            width: 1.5,
+            opacity: 0.6
         }
     };
     var tpdata = [{name: '人物', itemStyle: {color: '#FF3030'}, children: [{name: 'UP主', itemStyle: {color: '#FF7A7A'}, children: [{name: '岚少', value: 6135, itemStyle: {color: '#FF7A7A'}}, {name: 'レトルト', value: 2176, itemStyle: {color: '#FF5757'}}, {name: '敖厂长', value: 7614, itemStyle: {color: '#FF7A7A'}}, {name: '柿チョコ', value: 1604, itemStyle: {color: '#FF5757'}}, {name: '蛇足', value: 1349, itemStyle: {color: '#FF9494'}}, {name: '黑桐谷歌', value: 3624, itemStyle: {color: '#FF7A7A'}}, {name: 'Q君', value: 2497, itemStyle: {color: '#FF7A7A'}}, {name: '纯黑', value: 1728, itemStyle: {color: '#FF5757'}}, {name: '触手猴', value: 2804, itemStyle: {color: '#FF5757'}}, {name: '伍声2009', value: 2264, itemStyle: {color: '#FF5757'}}, {name: '祈INORY', value: 2629, itemStyle: {color: '#FF5757'}}, {name: '老湿★KFG', value: 1537, itemStyle: {color: '#FF5757'}}, {name: '逍遥散人', value: 1947, itemStyle: {color: '#FF5757'}}, {name: '12DORA', value: 1849, itemStyle: {color: '#FF9494'}}, {name: '咕噜碳', value: 3472, itemStyle: {color: '#FF7A7A'}}]}, {name: '声优', itemStyle: {color: '#FF5757'}, children: [{name: '声优', value: 1736, itemStyle: {color: '#FF9494'}}, {name: '钉宫理惠', value: 1353, itemStyle: {color: '#FF5757'}}, {name: '花泽香菜', value: 1645, itemStyle: {color: '#FF7A7A'}}]}, {name: '纸片人', itemStyle: {color: '#FF9494'}, children: [{name: '初音ミク', value: 3326, itemStyle: {color: '#FF9494'}}, {name: '芙兰朵露·斯卡雷特', value: 1325, itemStyle: {color: '#FF7A7A'}}, {name: '洛天依', value: 3107, itemStyle: {color: '#FF7A7A'}}]}, {name: '解说', itemStyle: {color: '#FF5757'}, children: [{name: '星际老男孩', value: 1908, itemStyle: {color: '#FF9494'}}, {name: '撒萌萌', value: 2755, itemStyle: {color: '#FF9494'}}]}, {name: '唱见', itemStyle: {color: '#FF7A7A'}, children: [{name: '96猫', value: 3185, itemStyle: {color: '#FF7A7A'}}, {name: '钢兵', value: 1380, itemStyle: {color: '#FF5757'}}, {name: '赤ティン', value: 1598, itemStyle: {color: '#FF7A7A'}}]}, {name: '明星', itemStyle: {color: '#FF5757'}, children: [{name: '贝尔·格里尔斯', value: 4428, itemStyle: {color: '#FF5757'}}, {name: 'AKB48', value: 1381, itemStyle: {color: '#FF5757'}}]}]}, {name: '文化', itemStyle: {color: '#F57A00'}, children: [{name: '流行语', itemStyle: {color: '#FF9933'}, children: [{name: '兄贵', value: 1960, itemStyle: {color: '#FFB870'}}, {name: '空耳', value: 1388, itemStyle: {color: '#F57A00'}}, {name: '福利', value: 1617, itemStyle: {color: '#FFB870'}}, {name: '哲学', value: 1650, itemStyle: {color: '#FFB870'}}, {name: '技术宅', value: 1456, itemStyle: {color: '#FF9933'}}, {name: '百合', value: 1517, itemStyle: {color: '#FFB870'}}, {name: '満福神社', value: 1304, itemStyle: {color: '#FFB870'}}]}, {name: '鬼畜', itemStyle: {color: '#FFB870'}, children: [{name: '金坷垃', value: 2070, itemStyle: {color: '#F5F500'}}, {name: '元首', value: 2373, itemStyle: {color: '#F57A00'}}]}, {name: '词语', itemStyle: {color: '#F5F500'}, children: [{name: '搞笑', value: 2087, itemStyle: {color: '#FF9933'}}]}]}, {name: '自然', itemStyle: {color: '#FFFF33'}, children: [{name: '动物', itemStyle: {color: '#F5F500'}, children: [{name: '喵星人', value: 2278, itemStyle: {color: '#FFFF70'}}]}]}, {name: '生活', itemStyle: {color: '#95E600'}, children: [{name: '厨艺', itemStyle: {color: '#B2FF24'}, children: [{name: '料理制作', value: 1660, itemStyle: {color: '#B2FF24'}}]}]}, {name: '视频', itemStyle: {color: '#22E600'}, children: [{name: '纪录片', itemStyle: {color: '#00E650'}, children: [{name: 'BBC', value: 1302, itemStyle: {color: '#95E600'}}]}, {name: '周刊', itemStyle: {color: '#61FF98'}, children: [{name: '周刊哔哩哔哩排行榜', value: 5210, itemStyle: {color: '#61FF98'}}, {name: 'NICO翻唱周刊', value: 1430, itemStyle: {color: '#24FF70'}}]}, {name: '番剧', itemStyle: {color: '#95E600'}, children: [{name: 'BILIBILI正版', value: 1573, itemStyle: {color: '#24FF70'}}]}, {name: '电视剧', itemStyle: {color: '#24FF70'}, children: [{name: '日剧', value: 2829, itemStyle: {color: '#24FF70'}}]}, {name: '原创视频', itemStyle: {color: '#00E650'}, children: [{name: '微博上各种不科学的图', value: 5856, itemStyle: {color: '#24FF70'}}, {name: 'FPSRUSSIA', value: 1472, itemStyle: {color: '#00E650'}}]}, {name: '字幕组', itemStyle: {color: '#61FF98'}, children: [{name: 'SABER字幕组', value: 1417, itemStyle: {color: '#61FF98'}}]}, {name: '杂谈', itemStyle: {color: '#95E600'}, children: [{name: '游戏杂谈', value: 4218, itemStyle: {color: '#95E600'}}]}]}, {name: '游戏', itemStyle: {color: '#2445FF'}, children: [{name: '网游', itemStyle: {color: '#24B2FF'}, children: [{name: '守望先锋', value: 1396, itemStyle: {color: '#6179FF'}}, {name: '英雄联盟', value: 1759, itemStyle: {color: '#6179FF'}}, {name: 'DOTA2', value: 2168, itemStyle: {color: '#24B2FF'}}]}, {name: '单机游戏', itemStyle: {color: '#6179FF'}, children: [{name: 'GALGAME', value: 1916, itemStyle: {color: '#6179FF'}}]}]}, {name: '音乐', itemStyle: {color: '#DE24FF'}, children: [{name: 'VOCALOID', itemStyle: {color: '#E761FF'}, children: [{name: 'VOCALOID', value: 2811, itemStyle: {color: '#E761FF'}}]}, {name: '动漫音乐', itemStyle: {color: '#FF61C8'}, children: [{name: '动漫音乐', value: 2008, itemStyle: {color: '#E761FF'}}]}, {name: '东方音乐', itemStyle: {color: '#F09EFF'}, children: [{name: '东方音乐', value: 1798, itemStyle: {color: '#E761FF'}}]}]}]
@@ -412,15 +423,8 @@
                     normal: {
                         show: true,
                         interval: 0,
-                        //  textStyle: {
-                        //  color: '#ddd'
-                        //  }
                     },
-                    //  emphasis: {
-                    //      textStyle: {
-                    //          color: '#fff'
-                    //      }
-                    //  }
+
                 },
                 symbol: 'none',
                 lineStyle: {
@@ -451,28 +455,18 @@
                     return ele.time
                 })
             },
-            //  backgroundColor: '#25499F',
             title: [{
-                //  text: '基于18年5月4日对gallery的爬虫结果',
-                //  subtext: 'GDP单位:亿元',
+
                 left: 'center',
                 top: 'top',
                 textStyle: {
                     fontSize: 25,
-                    //  color: 'rgba(255,255,255, 0.9)'
                 }
             }, {
                 subtext: '基于18年4月5日视频统计播放的结果',
                 left: 'center',
                 top: '5%'
             }],
-            //  tooltip: {
-            //      formatter: function(params) {
-            //          if ('value' in params.data) {
-            //              return params.data.value[2] + ': ' + params.data.value[0];
-            //          }
-            //      }
-            //  },
             grid: {
                 left: 10,
                 right: '20%',
@@ -494,7 +488,6 @@
                             show: true,
                             position: 'right',
                             textStyle: {
-                                //  color: '#ddd'
                             }
                         }
                     },
@@ -507,7 +500,8 @@
     };
     tagpie = {
         title: {
-            text: '标签分类',
+            text: 'TOP50标签分类',
+            subtext: "分类仅供参考",
             subtextStyle: {
                 align: 'center'
             }
@@ -689,6 +683,99 @@
             }
         ]
     };
+    pxzb = {
+        backgroundColor: '#404a59',
+        legend: {
+            bottom: 30,
+            data: ['四月番剧'],
+            itemGap: 20,
+            textStyle: {
+                color: '#fff',
+                fontSize: 14
+            }
+        },
+        tooltip: {
+            padding: 10,
+            backgroundColor: '#222',
+            borderColor: '#777',
+            borderWidth: 1,
+            formatter: function (obj) {
+                var value = obj[0].value;
+                return '<div style="border-bottom: 1px solid rgba(255,255,255,.3); font-size: 18px;padding-bottom: 7px;margin-bottom: 7px">'
+                    + obj[0].seriesName + ' ' + value[0] + '日期：'
+                    + value[7]
+                    + '</div>'
+                    + schema[1].text + '：' + value[1] + '<br>'
+                    + schema[2].text + '：' + value[2] + '<br>'
+                    + schema[3].text + '：' + value[3] + '<br>';
+            }
+        },
+
+        parallelAxis: [
+            {dim: 0, name: schema[0].text},
+            {dim: 1, name: schema[1].text},
+            {dim: 2, name: schema[2].text},
+            {dim: 3, name: schema[3].text, min: 5, nameLocation: 'start'},
+        ],
+        visualMap: {
+            show: true,
+            min: 0,
+            max: 600000,
+            right: 20,
+            bottom: 30,
+            dimension: 0,
+            calculable: true,
+            inRange: {
+                color: ['#d94e5d','#eac736','#50a3ba'].reverse()
+            },
+            text: ['弹幕数', ''],
+            textGap: 20,
+            textStyle: {
+                color: '#fff'
+            }
+        },
+        parallel: {
+            left: '5%',
+            right: '18%',
+            bottom: 100,
+            parallelAxisDefault: {
+                type: 'value',
+                name: 'AQI指数',
+                nameLocation: 'end',
+                nameGap: 20,
+                nameTextStyle: {
+                    color: '#fff',
+                    fontSize: 12
+                },
+                axisLine: {
+                    lineStyle: {
+                        color: '#aaa'
+                    }
+                },
+                axisTick: {
+                    lineStyle: {
+                        color: '#777'
+                    }
+                },
+                splitLine: {
+                    show: false
+                },
+                axisLabel: {
+                    textStyle: {
+                        color: '#fff'
+                    }
+                }
+            }
+        },
+        series: [
+            {
+                name: '北京',
+                type: 'parallel',
+                lineStyle: lineStyle,
+                data: scpdata
+            }
+        ]
+    };
     singlepoint = {
         grid: [
             {x: '7%', y: '7%', width: '38%', height: '38%'},
@@ -808,6 +895,7 @@
     tpChart.setOption(tagpie, true);
     tbChart.setOption(option,true);
     scpChart.setOption(scatterpoint,true);
+    pxzbChart.setOption(pxzb,true);
     sipChart.setOption(singlepoint,true);
     lineChart.setOption(line,true);
 </script>
