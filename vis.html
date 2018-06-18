@@ -7,11 +7,12 @@
 <body style="height: 100%; margin: 100px">
 <h1 style="text-align:center">BiliBili用户信息可视化</h1>
 <h2>1、注册人数</h2>
-<div id="number" style="height:300px;width: 60%;margin-left:auto;margin-right:auto"></div>
-<div id="proportion" style="height: 300px;width: 60%;margin-left:auto;margin-right:auto"></div>
+<div id="number" style="height:300px;width: 50%;margin-left:auto;margin-right:auto"></div>
+<div id="proportion" style="height: 300px;width: 50%;margin-left:auto;margin-right:auto"></div>
+<div id="pie" style="height: 300px;width: 90%;margin-left:auto;margin-right:auto"></div>
 <h2>2、关注标签</h2>
 <div id="wordcloud" style="height: 500px;width: 60%;margin-left:auto;margin-right:auto"></div>
-<div id="tagpie" style="height: 500px;width: 60%;margin-left:auto;margin-right:auto"></div>
+<div id="tagpie" style="height: 600px;width: 60%;margin-left:auto;margin-right:auto"></div>
 <h2>3、追番情况</h2>
 <div id="scatterpoint" style="height: 500px;width: 60%;margin-left:auto;margin-right:auto"></div>
 <div id="singlepoint" style="height: 600px;width: 80%;margin-left:auto;margin-right:auto"></div>
@@ -23,6 +24,7 @@
 <script type="text/javascript">
     var numChart = echarts.init(document.getElementById("number"));
     var proChart = echarts.init(document.getElementById("proportion"));
+    var pieChart = echarts.init(document.getElementById("pie"));
     var wcChart = echarts.init(document.getElementById("wordcloud"));
     var tpChart = echarts.init(document.getElementById("tagpie"));
     var tbChart = echarts.init(document.getElementById("totalbars"));
@@ -145,7 +147,13 @@
             {name: '【炮姐/AMV】我永远都会守护在你的身边！', value: 127000}]
     }
     ];
-    var scpdata = [[195118, 1049886, 16651087, 9.8, "Megalo Box"], [121500, 374184, 3952919, 9.7, "Comic Girls"], [47261, 488972, 5287360, 9.3, "ALICE or ALICE"], [560576, 2067987, 20108982, 8.9, "Fate/EXTRA Last Encore"], [518312, 1510906, 26165938, 9.8, "齐木楠雄的灾难 第二季"], [31866, 186447, 1782513, 9.8, "鹿枫堂"], [375754, 811634, 17591124, 8.0, "黑色四叶草"], [116866, 218743, 4634747, 7.0, "高达创形者"], [45333, 384931, 5146944, 9.3, "宇宙战舰提拉米斯"], [24892, 119867, 1903924, 5.9, "樱花忍法帖"], [182028, 665073, 5985910, 9.3, "魔法少女 俺"], [20217, 141207, 1362062, 9.5, "琴之森"], [149546, 320748, 4118898, 9.5, "赛马娘"], [121925, 652756, 6709909, 9.0, "Caligula 卡里古拉"], [46362, 241945, 2112482, 9.2, "冷然之天秤"], [1290649, 2458459, 32231537, 9.8, "魔卡少女樱 CLEAR CARD篇"], [3383, 31597, 211178, 9.0, "温泉屋小女管家"], [130943, 539355, 7173807, 9.8, "鬼灯的冷彻 第二季 其二"], [140457, 866037, 7271456, 9.3, "女神异闻录5 动画版"], [58754, 338999, 2679947, 8.3, "恶魔战线"], [9906, 27599, 544770, 9.7, "棒球大联盟 2"], [303829, 1056057, 16517566, 9.9, "我的英雄学院 第三季"], [57051, 206660, 2064993, 9.5, "LOST SONG 失落的歌谣"], [338855, 1491171, 37325799, 9.7, "戒律的复活"], [247840, 566552, 10156423, 6.1, "皇帝圣印战记"], [55196, 392413, 2783834, 9.8, "全金属狂潮 Invisible Victory"], [12783, 77344, 1066013, 8.6, "钱进球场"], [12308, 337164, 2234175, 9.0, "敦君与女朋友"], [161937, 489193, 7225791, 8.5, "刀使巫女"], [453601, 1802367, 26869694, 9.7, "超能力女儿"], [351110, 1401306, 15717560, 9.6, "宅男腐女恋爱真难"], [210775, 853813, 7056388, 8.9, "多田君不恋爱"], [2529045, 1704866, 90267247, 5.3, "博人传 火影忍者新时代"], [70659, 452833, 3740032, 6.9, "重神机潘多拉"], [325135, 1378861, 12691530, 9.8, "卫宫家今天的饭"]];
+    var scpdata = [[195118, 1049886, 16651087, 9.8, "Megalo Box"], [121500, 374184, 3952919, 9.7, "Comic Girls"], [47261, 488972, 5287360, 9.3, "ALICE or ALICE"], [560576, 2067987, 20108982, 8.9, "Fate/EXTRA Last Encore"], [518312, 1510906, 26165938, 9.8, "齐木楠雄的灾难 第二季"], [31866, 186447, 1782513, 9.8, "鹿枫堂"], [116866, 218743, 4634747, 7.0, "高达创形者"], [45333, 384931, 5146944, 9.3, "宇宙战舰提拉米斯"], [24892, 119867, 1903924, 5.9, "樱花忍法帖"], [182028, 665073, 5985910, 9.3, "魔法少女 俺"], [20217, 141207, 1362062, 9.5, "琴之森"], [149546, 320748, 4118898, 9.5, "赛马娘"], [121925, 652756, 6709909, 9.0, "Caligula 卡里古拉"], [46362, 241945, 2112482, 9.2, "冷然之天秤"], [3383, 31597, 211178, 9.0, "温泉屋小女管家"], [130943, 539355, 7173807, 9.8, "鬼灯的冷彻 第二季 其二"], [140457, 866037, 7271456, 9.3, "女神异闻录5 动画版"], [58754, 338999, 2679947, 8.3, "恶魔战线"], [9906, 27599, 544770, 9.7, "棒球大联盟 2"], [303829, 1056057, 16517566, 9.9, "我的英雄学院 第三季"], [57051, 206660, 2064993, 9.5, "LOST SONG 失落的歌谣"], [338855, 1491171, 37325799, 9.7, "戒律的复活"], [247840, 566552, 10156423, 6.1, "皇帝圣印战记"], [55196, 392413, 2783834, 9.8, "全金属狂潮 Invisible Victory"], [12783, 77344, 1066013, 8.6, "钱进球场"], [12308, 337164, 2234175, 9.0, "敦君与女朋友"], [161937, 489193, 7225791, 8.5, "刀使巫女"], [453601, 1802367, 26869694, 9.7, "超能力女儿"], [351110, 1401306, 15717560, 9.6, "宅男腐女恋爱真难"], [210775, 853813, 7056388, 8.9, "多田君不恋爱"], [70659, 452833, 3740032, 6.9, "重神机潘多拉"], [325135, 1378861, 12691530, 9.8, "卫宫家今天的饭"]];
+    var schema = [
+        {name: 'danmuku_count', index: 0, text: '弹幕数'},
+        {name: 'attention', index: 1, text: '追番数'},
+        {name: 'play_count', index: 2, text: '播放量'},
+        {name: 'rank', index: 3, text: '评分'}
+    ];
     var itemStyle = {
         normal: {
             opacity: 0.8,
@@ -155,667 +163,7 @@
             shadowColor: 'rgba(0, 0, 0, 0.5)'
         }
     };
-    var tpdata = [{
-        name: '人物',
-        itemStyle: {
-            color: '#da0d68'
-        },
-        children: [{
-            name: 'UP主',
-            value: 1,
-            itemStyle: {
-                color: '#975e6d'
-            }
-        }, {
-            name: '你好',
-            itemStyle: {
-                color: '#e0719c'
-            },
-            children: [{
-                name: 'Chamomile',
-                value: 1,
-                itemStyle: {
-                    color: '#f99e1c'
-                }
-            }, {
-                name: 'Rose',
-                value: 1,
-                itemStyle: {
-                    color: '#ef5a78'
-                }
-            }, {
-                name: 'Jasmine',
-                value: 1,
-                itemStyle: {
-                    color: '#f7f1bd'
-                }
-            }]
-        }]
-    }, {
-        name: 'Fruity',
-        itemStyle: {
-            color: '#da1d23'
-        },
-        children: [{
-            name: 'Berry',
-            itemStyle: {
-                color: '#dd4c51'
-            },
-            children: [{
-                name: 'Blackberry',
-                value: 1,
-                itemStyle: {
-                    color: '#3e0317'
-                }
-            }, {
-                name: 'Raspberry',
-                value: 1,
-                itemStyle: {
-                    color: '#e62969'
-                }
-            }, {
-                name: 'Blueberry',
-                value: 1,
-                itemStyle: {
-                    color: '#6569b0'
-                }
-            }, {
-                name: 'Strawberry',
-                value: 1,
-                itemStyle: {
-                    color: '#ef2d36'
-                }
-            }]
-        }, {
-            name: 'Dried Fruit',
-            itemStyle: {
-                color: '#c94a44'
-            },
-            children: [{
-                name: 'Raisin',
-                value: 1,
-                itemStyle: {
-                    color: '#b53b54'
-                }
-            }, {
-                name: 'Prune',
-                value: 1,
-                itemStyle: {
-                    color: '#a5446f'
-                }
-            }]
-        }, {
-            name: 'Other Fruit',
-            itemStyle: {
-                color: '#dd4c51'
-            },
-            children: [{
-                name: 'Coconut',
-                value: 1,
-                itemStyle: {
-                    color: '#f2684b'
-                }
-            }, {
-                name: 'Cherry',
-                value: 1,
-                itemStyle: {
-                    color: '#e73451'
-                }
-            }, {
-                name: 'Pomegranate',
-                value: 1,
-                itemStyle: {
-                    color: '#e65656'
-                }
-            }, {
-                name: 'Pineapple',
-                value: 1,
-                itemStyle: {
-                    color: '#f89a1c'
-                }
-            }, {
-                name: 'Grape',
-                value: 1,
-                itemStyle: {
-                    color: '#aeb92c'
-                }
-            }, {
-                name: 'Apple',
-                value: 1,
-                itemStyle: {
-                    color: '#4eb849'
-                }
-            }, {
-                name: 'Peach',
-                value: 1,
-                itemStyle: {
-                    color: '#f68a5c'
-                }
-            }, {
-                name: 'Pear',
-                value: 1,
-                itemStyle: {
-                    color: '#baa635'
-                }
-            }]
-        }, {
-            name: 'Citrus Fruit',
-            itemStyle: {
-                color: '#f7a128'
-            },
-            children: [{
-                name: 'Grapefruit',
-                value: 1,
-                itemStyle: {
-                    color: '#f26355'
-                }
-            }, {
-                name: 'Orange',
-                value: 1,
-                itemStyle: {
-                    color: '#e2631e'
-                }
-            }, {
-                name: 'Lemon',
-                value: 1,
-                itemStyle: {
-                    color: '#fde404'
-                }
-            }, {
-                name: 'Lime',
-                value: 1,
-                itemStyle: {
-                    color: '#7eb138'
-                }
-            }]
-        }]
-    }, {
-        name: 'Sour/\nFermented',
-        itemStyle: {
-            color: '#ebb40f'
-        },
-        children: [{
-            name: 'Sour',
-            itemStyle: {
-                color: '#e1c315'
-            },
-            children: [{
-                name: 'Sour Aromatics',
-                value: 1,
-                itemStyle: {
-                    color: '#9ea718'
-                }
-            }, {
-                name: 'Acetic Acid',
-                value: 1,
-                itemStyle: {
-                    color: '#94a76f'
-                }
-            }, {
-                name: 'Butyric Acid',
-                value: 1,
-                itemStyle: {
-                    color: '#d0b24f'
-                }
-            }, {
-                name: 'Isovaleric Acid',
-                value: 1,
-                itemStyle: {
-                    color: '#8eb646'
-                }
-            }, {
-                name: 'Citric Acid',
-                value: 1,
-                itemStyle: {
-                    color: '#faef07'
-                }
-            }, {
-                name: 'Malic Acid',
-                value: 1,
-                itemStyle: {
-                    color: '#c1ba07'
-                }
-            }]
-        }, {
-            name: 'Alcohol/\nFremented',
-            itemStyle: {
-                color: '#b09733'
-            },
-            children: [{
-                name: 'Winey',
-                value: 1,
-                itemStyle: {
-                    color: '#8f1c53'
-                }
-            }, {
-                name: 'Whiskey',
-                value: 1,
-                itemStyle: {
-                    color: '#b34039'
-                }
-            }, {
-                name: 'Fremented',
-                value: 1,
-                itemStyle: {
-                    color: '#ba9232'
-                }
-            }, {
-                name: 'Overripe',
-                value: 1,
-                itemStyle: {
-                    color: '#8b6439'
-                }
-            }]
-        }]
-    }, {
-        name: 'Green/\nVegetative',
-        itemStyle: {
-            color: '#187a2f'
-        },
-        children: [{
-            name: 'Olive Oil',
-            value: 1,
-            itemStyle: {
-                color: '#a2b029'
-            }
-        }, {
-            name: 'Raw',
-            value: 1,
-            itemStyle: {
-                color: '#718933'
-            }
-        }, {
-            name: 'Green/\nVegetative',
-            itemStyle: {
-                color: '#3aa255'
-            },
-            children: [{
-                name: 'Under-ripe',
-                value: 1,
-                itemStyle: {
-                    color: '#a2bb2b'
-                }
-            }, {
-                name: 'Peapod',
-                value: 1,
-                itemStyle: {
-                    color: '#62aa3c'
-                }
-            }, {
-                name: 'Fresh',
-                value: 1,
-                itemStyle: {
-                    color: '#03a653'
-                }
-            }, {
-                name: 'Dark Green',
-                value: 1,
-                itemStyle: {
-                    color: '#038549'
-                }
-            }, {
-                name: 'Vegetative',
-                value: 1,
-                itemStyle: {
-                    color: '#28b44b'
-                }
-            }, {
-                name: 'Hay-like',
-                value: 1,
-                itemStyle: {
-                    color: '#a3a830'
-                }
-            }, {
-                name: 'Herb-like',
-                value: 1,
-                itemStyle: {
-                    color: '#7ac141'
-                }
-            }]
-        }, {
-            name: 'Beany',
-            value: 1,
-            itemStyle: {
-                color: '#5e9a80'
-            }
-        }]
-    }, {
-        name: 'Other',
-        itemStyle: {
-            color: '#0aa3b5'
-        },
-        children: [{
-            name: 'Papery/Musty',
-            itemStyle: {
-                color: '#9db2b7'
-            },
-            children: [{
-                name: 'Stale',
-                value: 1,
-                itemStyle: {
-                    color: '#8b8c90'
-                }
-            }, {
-                name: 'Cardboard',
-                value: 1,
-                itemStyle: {
-                    color: '#beb276'
-                }
-            }, {
-                name: 'Papery',
-                value: 1,
-                itemStyle: {
-                    color: '#fefef4'
-                }
-            }, {
-                name: 'Woody',
-                value: 1,
-                itemStyle: {
-                    color: '#744e03'
-                }
-            }, {
-                name: 'Moldy/Damp',
-                value: 1,
-                itemStyle: {
-                    color: '#a3a36f'
-                }
-            }, {
-                name: 'Musty/Dusty',
-                value: 1,
-                itemStyle: {
-                    color: '#c9b583'
-                }
-            }, {
-                name: 'Musty/Earthy',
-                value: 1,
-                itemStyle: {
-                    color: '#978847'
-                }
-            }, {
-                name: 'Animalic',
-                value: 1,
-                itemStyle: {
-                    color: '#9d977f'
-                }
-            }, {
-                name: 'Meaty Brothy',
-                value: 1,
-                itemStyle: {
-                    color: '#cc7b6a'
-                }
-            }, {
-                name: 'Phenolic',
-                value: 1,
-                itemStyle: {
-                    color: '#db646a'
-                }
-            }]
-        }, {
-            name: 'Chemical',
-            itemStyle: {
-                color: '#76c0cb'
-            },
-            children: [{
-                name: 'Bitter',
-                value: 1,
-                itemStyle: {
-                    color: '#80a89d'
-                }
-            }, {
-                name: 'Salty',
-                value: 1,
-                itemStyle: {
-                    color: '#def2fd'
-                }
-            }, {
-                name: 'Medicinal',
-                value: 1,
-                itemStyle: {
-                    color: '#7a9bae'
-                }
-            }, {
-                name: 'Petroleum',
-                value: 1,
-                itemStyle: {
-                    color: '#039fb8'
-                }
-            }, {
-                name: 'Skunky',
-                value: 1,
-                itemStyle: {
-                    color: '#5e777b'
-                }
-            }, {
-                name: 'Rubber',
-                value: 1,
-                itemStyle: {
-                    color: '#120c0c'
-                }
-            }]
-        }]
-    }, {
-        name: 'Roasted',
-        itemStyle: {
-            color: '#c94930'
-        },
-        children: [{
-            name: 'Pipe Tobacco',
-            value: 1,
-            itemStyle: {
-                color: '#caa465'
-            }
-        }, {
-            name: 'Tobacco',
-            value: 1,
-            itemStyle: {
-                color: '#dfbd7e'
-            }
-        }, {
-            name: 'Burnt',
-            itemStyle: {
-                color: '#be8663'
-            },
-            children: [{
-                name: 'Acrid',
-                value: 1,
-                itemStyle: {
-                    color: '#b9a449'
-                }
-            }, {
-                name: 'Ashy',
-                value: 1,
-                itemStyle: {
-                    color: '#899893'
-                }
-            }, {
-                name: 'Smoky',
-                value: 1,
-                itemStyle: {
-                    color: '#a1743b'
-                }
-            }, {
-                name: 'Brown, Roast',
-                value: 1,
-                itemStyle: {
-                    color: '#894810'
-                }
-            }]
-        }, {
-            name: 'Cereal',
-            itemStyle: {
-                color: '#ddaf61'
-            },
-            children: [{
-                name: 'Grain',
-                value: 1,
-                itemStyle: {
-                    color: '#b7906f'
-                }
-            }, {
-                name: 'Malt',
-                value: 1,
-                itemStyle: {
-                    color: '#eb9d5f'
-                }
-            }]
-        }]
-    }, {
-        name: 'Spices',
-        itemStyle: {
-            color: '#ad213e'
-        },
-        children: [{
-            name: 'Pungent',
-            value: 1,
-            itemStyle: {
-                color: '#794752'
-            }
-        }, {
-            name: 'Pepper',
-            value: 1,
-            itemStyle: {
-                color: '#cc3d41'
-            }
-        }, {
-            name: 'Brown Spice',
-            itemStyle: {
-                color: '#b14d57'
-            },
-            children: [{
-                name: 'Anise',
-                value: 1,
-                itemStyle: {
-                    color: '#c78936'
-                }
-            }, {
-                name: 'Nutmeg',
-                value: 1,
-                itemStyle: {
-                    color: '#8c292c'
-                }
-            }, {
-                name: 'Cinnamon',
-                value: 1,
-                itemStyle: {
-                    color: '#e5762e'
-                }
-            }, {
-                name: 'Clove',
-                value: 1,
-                itemStyle: {
-                    color: '#a16c5a'
-                }
-            }]
-        }]
-    }, {
-        name: 'Nutty/\nCocoa',
-        itemStyle: {
-            color: '#a87b64'
-        },
-        children: [{
-            name: 'Nutty',
-            itemStyle: {
-                color: '#c78869'
-            },
-            children: [ {
-                name: 'Peanuts',
-                value: 1,
-                itemStyle: {
-                    color: '#d4ad12'
-                }
-            }, {
-                name: 'Hazelnut',
-                value: 1,
-                itemStyle: {
-                    color: '#9d5433'
-                }
-            }, {
-                name: 'Almond',
-                value: 1,
-                itemStyle: {
-                    color: '#c89f83'
-                }
-            }]
-        }, {
-            name: 'Cocoa',
-            itemStyle: {
-                color: '#bb764c'
-            },
-            children: [{
-                name: 'Chocolate',
-                value: 1,
-                itemStyle: {
-                    color: '#692a19'
-                }
-            }, {
-                name: 'Dark Chocolate',
-                value: 1,
-                itemStyle: {
-                    color: '#470604'
-                }
-            }]
-        }]
-    }, {
-        name: 'Sweet',
-        itemStyle: {
-            color: '#e65832'
-        },
-        children: [{
-            name: 'Brown Sugar',
-            itemStyle: {
-                color: '#d45a59'
-            },
-            children: [{
-                name: 'Molasses',
-                value: 1,
-                itemStyle: {
-                    color: '#310d0f'
-                }
-            }, {
-                name: 'Maple Syrup',
-                value: 1,
-                itemStyle: {
-                    color: '#ae341f'
-                }
-            }, {
-                name: 'Caramelized',
-                value: 1,
-                itemStyle: {
-                    color: '#d78823'
-                }
-            }, {
-                name: 'Honey',
-                value: 1,
-                itemStyle: {
-                    color: '#da5c1f'
-                }
-            }]
-        }, {
-            name: 'Vanilla',
-            value: 1,
-            itemStyle: {
-                color: '#f89a80'
-            }
-        }, {
-            name: 'Vanillin',
-            value: 1,
-            itemStyle: {
-                color: '#f37674'
-            }
-        }, {
-            name: 'Overall Sweet',
-            value: 1,
-            itemStyle: {
-                color: '#e75b68'
-            }
-        }, {
-            name: 'Sweet Aromatics',
-            value: 1,
-            itemStyle: {
-                color: '#d0545f'
-            }
-        }]
-    }];
+    var tpdata = [{name: '人物', itemStyle: {color: '#FF3030'}, children: [{name: 'UP主', itemStyle: {color: '#FF7A7A'}, children: [{name: '岚少', value: 6135, itemStyle: {color: '#FF7A7A'}}, {name: 'レトルト', value: 2176, itemStyle: {color: '#FF5757'}}, {name: '敖厂长', value: 7614, itemStyle: {color: '#FF7A7A'}}, {name: '柿チョコ', value: 1604, itemStyle: {color: '#FF5757'}}, {name: '蛇足', value: 1349, itemStyle: {color: '#FF9494'}}, {name: '黑桐谷歌', value: 3624, itemStyle: {color: '#FF7A7A'}}, {name: 'Q君', value: 2497, itemStyle: {color: '#FF7A7A'}}, {name: '纯黑', value: 1728, itemStyle: {color: '#FF5757'}}, {name: '触手猴', value: 2804, itemStyle: {color: '#FF5757'}}, {name: '伍声2009', value: 2264, itemStyle: {color: '#FF5757'}}, {name: '祈INORY', value: 2629, itemStyle: {color: '#FF5757'}}, {name: '老湿★KFG', value: 1537, itemStyle: {color: '#FF5757'}}, {name: '逍遥散人', value: 1947, itemStyle: {color: '#FF5757'}}, {name: '12DORA', value: 1849, itemStyle: {color: '#FF9494'}}, {name: '咕噜碳', value: 3472, itemStyle: {color: '#FF7A7A'}}]}, {name: '声优', itemStyle: {color: '#FF5757'}, children: [{name: '声优', value: 1736, itemStyle: {color: '#FF9494'}}, {name: '钉宫理惠', value: 1353, itemStyle: {color: '#FF5757'}}, {name: '花泽香菜', value: 1645, itemStyle: {color: '#FF7A7A'}}]}, {name: '纸片人', itemStyle: {color: '#FF9494'}, children: [{name: '初音ミク', value: 3326, itemStyle: {color: '#FF9494'}}, {name: '芙兰朵露·斯卡雷特', value: 1325, itemStyle: {color: '#FF7A7A'}}, {name: '洛天依', value: 3107, itemStyle: {color: '#FF7A7A'}}]}, {name: '解说', itemStyle: {color: '#FF5757'}, children: [{name: '星际老男孩', value: 1908, itemStyle: {color: '#FF9494'}}, {name: '撒萌萌', value: 2755, itemStyle: {color: '#FF9494'}}]}, {name: '唱见', itemStyle: {color: '#FF7A7A'}, children: [{name: '96猫', value: 3185, itemStyle: {color: '#FF7A7A'}}, {name: '钢兵', value: 1380, itemStyle: {color: '#FF5757'}}, {name: '赤ティン', value: 1598, itemStyle: {color: '#FF7A7A'}}]}, {name: '明星', itemStyle: {color: '#FF5757'}, children: [{name: '贝尔·格里尔斯', value: 4428, itemStyle: {color: '#FF5757'}}, {name: 'AKB48', value: 1381, itemStyle: {color: '#FF5757'}}]}]}, {name: '文化', itemStyle: {color: '#F57A00'}, children: [{name: '流行语', itemStyle: {color: '#FF9933'}, children: [{name: '兄贵', value: 1960, itemStyle: {color: '#FFB870'}}, {name: '空耳', value: 1388, itemStyle: {color: '#F57A00'}}, {name: '福利', value: 1617, itemStyle: {color: '#FFB870'}}, {name: '哲学', value: 1650, itemStyle: {color: '#FFB870'}}, {name: '技术宅', value: 1456, itemStyle: {color: '#FF9933'}}, {name: '百合', value: 1517, itemStyle: {color: '#FFB870'}}, {name: '満福神社', value: 1304, itemStyle: {color: '#FFB870'}}]}, {name: '鬼畜', itemStyle: {color: '#FFB870'}, children: [{name: '金坷垃', value: 2070, itemStyle: {color: '#F5F500'}}, {name: '元首', value: 2373, itemStyle: {color: '#F57A00'}}]}, {name: '词语', itemStyle: {color: '#F5F500'}, children: [{name: '搞笑', value: 2087, itemStyle: {color: '#FF9933'}}]}]}, {name: '自然', itemStyle: {color: '#FFFF33'}, children: [{name: '动物', itemStyle: {color: '#F5F500'}, children: [{name: '喵星人', value: 2278, itemStyle: {color: '#FFFF70'}}]}]}, {name: '生活', itemStyle: {color: '#95E600'}, children: [{name: '厨艺', itemStyle: {color: '#B2FF24'}, children: [{name: '料理制作', value: 1660, itemStyle: {color: '#B2FF24'}}]}]}, {name: '视频', itemStyle: {color: '#22E600'}, children: [{name: '纪录片', itemStyle: {color: '#00E650'}, children: [{name: 'BBC', value: 1302, itemStyle: {color: '#95E600'}}]}, {name: '周刊', itemStyle: {color: '#61FF98'}, children: [{name: '周刊哔哩哔哩排行榜', value: 5210, itemStyle: {color: '#61FF98'}}, {name: 'NICO翻唱周刊', value: 1430, itemStyle: {color: '#24FF70'}}]}, {name: '番剧', itemStyle: {color: '#95E600'}, children: [{name: 'BILIBILI正版', value: 1573, itemStyle: {color: '#24FF70'}}]}, {name: '电视剧', itemStyle: {color: '#24FF70'}, children: [{name: '日剧', value: 2829, itemStyle: {color: '#24FF70'}}]}, {name: '原创视频', itemStyle: {color: '#00E650'}, children: [{name: '微博上各种不科学的图', value: 5856, itemStyle: {color: '#24FF70'}}, {name: 'FPSRUSSIA', value: 1472, itemStyle: {color: '#00E650'}}]}, {name: '字幕组', itemStyle: {color: '#61FF98'}, children: [{name: 'SABER字幕组', value: 1417, itemStyle: {color: '#61FF98'}}]}, {name: '杂谈', itemStyle: {color: '#95E600'}, children: [{name: '游戏杂谈', value: 4218, itemStyle: {color: '#95E600'}}]}]}, {name: '游戏', itemStyle: {color: '#2445FF'}, children: [{name: '网游', itemStyle: {color: '#24B2FF'}, children: [{name: '守望先锋', value: 1396, itemStyle: {color: '#6179FF'}}, {name: '英雄联盟', value: 1759, itemStyle: {color: '#6179FF'}}, {name: 'DOTA2', value: 2168, itemStyle: {color: '#24B2FF'}}]}, {name: '单机游戏', itemStyle: {color: '#6179FF'}, children: [{name: 'GALGAME', value: 1916, itemStyle: {color: '#6179FF'}}]}]}, {name: '音乐', itemStyle: {color: '#DE24FF'}, children: [{name: 'VOCALOID', itemStyle: {color: '#E761FF'}, children: [{name: 'VOCALOID', value: 2811, itemStyle: {color: '#E761FF'}}]}, {name: '动漫音乐', itemStyle: {color: '#FF61C8'}, children: [{name: '动漫音乐', value: 2008, itemStyle: {color: '#E761FF'}}]}, {name: '东方音乐', itemStyle: {color: '#F09EFF'}, children: [{name: '东方音乐', value: 1798, itemStyle: {color: '#E761FF'}}]}]}]
     var hours = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10','11','12', '13', '14', '15','16','17','18','19','20','21','22','23','24'];
     var days = ['第一集', '第二集', '第三集', '第四集', ' 第五集',' 第六集',' 第七集',' 第八集',' 第九集',' 第十集'];
     var sipdata = [[0, 1, 359], [0, 2, 283], [0, 3, 151], [0, 4, 131], [0, 5, 192], [0, 6, 73], [0, 7, 118], [0, 8, 96], [0, 9, 60], [0, 10, 63], [0, 11, 55], [0, 12, 46], [0, 13, 42], [0, 14, 74], [0, 15, 126], [0, 16, 106], [0, 17, 122], [0, 18, 259], [0, 19, 63], [0, 20, 49], [0, 21, 125], [0, 22, 87], [0, 23, 243], [0, 24, 45], [1, 1, 129], [1, 2, 127], [1, 3, 82], [1, 4, 63], [1, 5, 114], [1, 6, 112], [1, 7, 148], [1, 8, 60], [1, 9, 170], [1, 10, 217], [1, 11, 138], [1, 12, 186], [1, 13, 211], [1, 14, 107], [1, 15, 84], [1, 16, 109], [1, 17, 71], [1, 18, 71], [1, 19, 28], [1, 20, 68], [1, 21, 143], [1, 22, 110], [1, 23, 436], [1, 24, 13], [2, 1, 132], [2, 2, 125], [2, 3, 75], [2, 4, 177], [2, 5, 154], [2, 6, 70], [2, 7, 107], [2, 8, 124], [2, 9, 82], [2, 10, 119], [2, 11, 78], [2, 12, 98], [2, 13, 146], [2, 14, 227], [2, 15, 148], [2, 16, 164], [2, 17, 123], [2, 18, 163], [2, 19, 86], [2, 20, 159], [2, 21, 86], [2, 22, 146], [2, 23, 160], [2, 24, 37], [3, 1, 118], [3, 2, 556], [3, 3, 56], [3, 4, 98], [3, 5, 111], [3, 6, 100], [3, 7, 89], [3, 8, 72], [3, 9, 200], [3, 10, 72], [3, 11, 131], [3, 12, 69], [3, 13, 54], [3, 14, 125], [3, 15, 209], [3, 16, 156], [3, 17, 195], [3, 18, 103], [3, 19, 64], [3, 20, 118], [3, 21, 81], [3, 22, 66], [3, 23, 137], [3, 24, 13], [4, 1, 272], [4, 2, 189], [4, 3, 45], [4, 4, 113], [4, 5, 159], [4, 6, 139], [4, 7, 135], [4, 8, 124], [4, 9, 136], [4, 10, 71], [4, 11, 127], [4, 12, 78], [4, 13, 154], [4, 14, 116], [4, 15, 87], [4, 16, 104], [4, 17, 119], [4, 18, 136], [4, 19, 104], [4, 20, 94], [4, 21, 116], [4, 22, 110], [4, 23, 198], [4, 24, 67], [5, 1, 114], [5, 2, 49], [5, 3, 51], [5, 4, 92], [5, 5, 133], [5, 6, 88], [5, 7, 89], [5, 8, 53], [5, 9, 65], [5, 10, 236], [5, 11, 177], [5, 12, 72], [5, 13, 143], [5, 14, 131], [5, 15, 224], [5, 16, 226], [5, 17, 93], [5, 18, 87], [5, 19, 315], [5, 20, 102], [5, 21, 121], [5, 22, 113], [5, 23, 184], [5, 24, 36], [6, 1, 103], [6, 2, 134], [6, 3, 186], [6, 4, 151], [6, 5, 97], [6, 6, 151], [6, 7, 131], [6, 8, 348], [6, 9, 180], [6, 10, 102], [6, 11, 101], [6, 12, 80], [6, 13, 52], [6, 14, 100], [6, 15, 80], [6, 16, 71], [6, 17, 76], [6, 18, 107], [6, 19, 96], [6, 20, 80], [6, 21, 88], [6, 22, 98], [6, 23, 256], [6, 24, 111], [7, 1, 131], [7, 2, 61], [7, 3, 130], [7, 4, 35], [7, 5, 45], [7, 6, 63], [7, 7, 87], [7, 8, 110], [7, 9, 110], [7, 10, 56], [7, 11, 61], [7, 12, 77], [7, 13, 244], [7, 14, 100], [7, 15, 64], [7, 16, 103], [7, 17, 155], [7, 18, 148], [7, 19, 90], [7, 20, 109], [7, 21, 170], [7, 22, 249], [7, 23, 455], [7, 24, 126], [8, 1, 150], [8, 2, 150], [8, 3, 68], [8, 4, 122], [8, 5, 114], [8, 6, 142], [8, 7, 63], [8, 8, 84], [8, 9, 74], [8, 10, 135], [8, 11, 116], [8, 12, 79], [8, 13, 132], [8, 14, 232], [8, 15, 44], [8, 16, 84], [8, 17, 87], [8, 18, 109], [8, 19, 396], [8, 20, 109], [8, 21, 121], [8, 22, 127], [8, 23, 154], [8, 24, 87], [9, 1, 90], [9, 2, 63], [9, 3, 69], [9, 4, 35], [9, 5, 63], [9, 6, 57], [9, 7, 95], [9, 8, 61], [9, 9, 35], [9, 10, 35], [9, 11, 91], [9, 12, 36], [9, 13, 68], [9, 14, 89], [9, 15, 216], [9, 16, 279], [9, 17, 91], [9, 18, 88], [9, 19, 253], [9, 20, 233], [9, 21, 184], [9, 22, 111], [9, 23, 483], [9, 24, 154]];
@@ -937,6 +285,83 @@
                 stack: '总量',
                 areaStyle: {normal: {}},
                 data:[0.85, 0.8157894736842105, 0.7872340425531915, 0.8141592920353983, 0.6659242761692651, 0.6105527638190955, 0.5159474671669794, 0.5050483803113168, 0.48765934363981556, 0.41029900332225916]
+            }
+        ]
+    };
+    pie = {
+        title : {
+            text: '性别比例 等级分布 付费比例',
+            subtext: '南丁格尔玫瑰图',
+            x:'center'
+        },
+        tooltip : {
+            trigger: 'item',
+            formatter: "{a} <br/>{b} : {c} ({d}%)"
+        },
+        legend: {
+            x : 'center',
+            y : 'bottom',
+            data:['保密','男','女','lv0','lv1','lv2','lv3','lv4','lv5+','普通会员','月费大会员','年度大会员'],
+            selected: {
+                '保密' : false,
+                'lv0' : false,
+                '普通会员' : false,
+            }
+        },
+
+        toolbox: {
+            show : true,
+            feature : {
+                mark : {show: true},
+                dataView : {show: true, readOnly: false},
+                magicType : {
+                    show: true,
+                    type: ['pie', 'funnel']
+                },
+                restore : {show: true},
+                saveAsImage : {show: true}
+            }
+        },
+        calculable : true,
+        series : [
+            {
+                name:'面积模式',
+                type:'pie',
+                radius : [30,80],
+                center : ['11.5%', '50%'],
+                roseType : 'area',
+                data:[
+                    {value:6031, name:'男'},
+                    {value:6522, name:'女'},
+                    {value:255447, name:'保密'}
+                ]
+            },
+            {
+                name:'面积模式',
+                type:'pie',
+                radius : [30, 80],
+                center : ['44.5%', '50%'],
+                roseType : 'area',
+                data:[
+                    {value:259329, name:'lv0'},
+                    {value:5868, name:'lv1'},
+                    {value:13242, name:'lv2'},
+                    {value:8924, name:'lv3'},
+                    {value:6265, name:'lv4'},
+                    {value:1395, name:'lv5+'}
+                ]
+            },
+            {
+                name:'面积模式',
+                type:'pie',
+                radius : [30, 80],
+                center : ['77.5%', '50%'],
+                roseType : 'area',
+                data:[
+                    {value:292408, name:'普通会员'},
+                    {value:1344, name:'月费大会员'},
+                    {value:1282, name:'年度大会员'}
+                ]
             }
         ]
     };
@@ -1165,7 +590,7 @@
                 color: '#fff',
                 fontSize: 14
             },
-            max: 2529045,
+            max: 600000,
             splitLine: {
                 show: false
             },
@@ -1199,7 +624,7 @@
                 top: '10%',
                 dimension: 2,
                 min: 200000,
-                max: 100000000,
+                max: 21000000,
                 itemWidth: 30,
                 itemHeight: 120,
                 calculable: true,
@@ -1378,6 +803,7 @@
     });
     numChart.setOption(number, true);
     proChart.setOption(proportion, true);
+    pieChart.setOption(pie, true);
     wcChart.setOption(wordcloud, true);
     tpChart.setOption(tagpie, true);
     tbChart.setOption(option,true);
